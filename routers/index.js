@@ -7,7 +7,8 @@ const homeController=require('../controllers/home_controllers');
 
 // to access the routers and controllers 
 router.get('/',homeController.home);
-router.get('/profile',homeController.profile)
+router.use('/users',require('./users'));
+router.use('/post',require('./posts'));
 
 //to use outside this file in index.js
 module.exports=router;
