@@ -1,6 +1,7 @@
+const User=require('../models/users')
 module.exports.home=function(req,res){
     return res.render('home',{
-        title:"HOME"
+        title:"social login page"
     })
 };
 // module.exports.profile=function(req,res){
