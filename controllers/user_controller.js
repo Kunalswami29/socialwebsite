@@ -55,9 +55,9 @@ module.exports.create = function(req, res){
 }
 
 
-// sign in and create a session for the user
+// sign in and create a session for the user means after the sign in the user will render to the mentioned page
 module.exports.createSession = function(req, res){
-    return res.redirect('/users/profile');
+    return res.redirect('/');
 }
 
 module.exports.destroySession = function(req, res){

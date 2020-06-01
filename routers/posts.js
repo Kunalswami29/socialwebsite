@@ -1,8 +1,8 @@
 const express= require('express');
-const route = express.Router();
+const router = express.Router();
+const postsController=require('../controllers/posts_controller');//this is for accessing the models
 
-const postController=require('../controllers/users_post');
+// router.get('/post',postsController.postPage);// this is after signing page rendering to the posts psge
+router.post('/create',postsController.create);//this is for calling the controller to create
 
-route.get('/contacts',postController.contacts);
-
-module.exports=route;
+module.exports=router;
