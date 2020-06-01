@@ -1,15 +1,23 @@
-<header>
-    page header
+<header id="head-container">
+    <div id="icon">
+
+        <p>Codeial</p>
+        <i class="fab fa-studiovinari"></i>
+        
+    </div>
+    <div id="horizontal-list">
     <ul>
         <% if(locals.user){ %>
-            <li><%= user.name %></li>
-            <li>
+            <li style="font-size: 1.2rem; font-family: serif; color: white;"><%= user.name %></li>
+            <li style="border:1px solid white; border-radius: 5px;">
                 <a href="/users/sign-out">Sign-Out</a>
             </li>
         <% }else{%>
+    
             <li>
-                <a href="/users/sign-in">Sign-In</a>
+                 <a href="/users/sign-in">Sign-In</a>
             </li>
+            
             <li>
                 <a href="/users/sign-up">Sign-Up</a>
             </li>
@@ -17,4 +25,5 @@
         <% } %>
         
     </ul>
+    </div>
 </header>

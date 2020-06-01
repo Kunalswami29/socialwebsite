@@ -1,16 +1,18 @@
 <html>
     <head>
         <title><%= locals.title %></title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
         <link rel="stylesheet" href="/css/layouts.css">
-        <link rel="stylesheet" href="/css/userprofile.css">
+        <link rel="stylesheet" href="/css/header.css">
+        <link rel="stylesheet" href="/css/footer.css">
         <%- style %>
     </head>
     <body>
         <%- include('_header') %> 
-
-        <%- body%>
-
-        <%- include('_footer') %>
+        <main id="layout-main">
+            <%- body%>
+        </main>
+               <%- include('_footer') %>
 
         <%- script %>
     </body>

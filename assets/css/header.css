@@ -1,0 +1,38 @@
+#head-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: #4553b6; }
+  #head-container #icon {
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    color: white;
+    font-family: serif;
+    font-style: italic;
+    align-items: center;
+    margin-left: 30px;
+    font-size: 1.5rem; }
+    #head-container #icon p::first-letter {
+      font-style: italic;
+      font-size: 2rem;
+      font-family: serif;
+      font-weight: 500; }
+  #head-container #horizontal-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 70%;
+    list-style: none;
+    padding-left: 0px;
+    font-family: sans-serif;
+    margin-left: 60rem;
+    align-items: center; }
+    #head-container #horizontal-list li {
+      display: inline-block;
+      margin: 0px 8px 8px 0px;
+      font-weight: 100;
+      font-size: 1.3rem; }
+      #head-container #horizontal-list li a {
+        color: white;
+        text-decoration: none; }

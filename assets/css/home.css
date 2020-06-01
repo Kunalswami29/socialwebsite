@@ -1,17 +1,16 @@
-body{
-    margin:0px;
-    background-color: cadetblue;
-}
-#heading{
-    font-size: 2rem;
-    font-family: sans-serif;
-    font-weight: 600;
-    text-align: center;
-}
-#container{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: max-content;
-    border:2px solid black;
-}
+body {
+  margin: 0px;
+  background-color: cadetblue; }
+
+#heading {
+  font-size: 2rem;
+  font-family: sans-serif;
+  font-weight: 600;
+  text-align: center; }
+
+#container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: max-content;
+  border: 2px solid black; }
