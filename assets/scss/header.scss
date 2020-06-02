@@ -1,49 +1,35 @@
-#head-container{
-    display: flex;
-    flex-direction: row;
-    width:100%;
-    background-color:#4553b6;
-
-    #icon{
+#layout-header{
+    nav{
         display: flex;
-        flex-direction: row;
-        width: 30%;
+        justify-content: space-between;
+        padding: 0 10px;
+        background: #2196f3;
         color: white;
-        font-family: serif;
-        font-style: italic;
-        align-items: center;
-        margin-left: 30px;
-        font-size: 1.5rem;
+        box-shadow: 1px 1px 1px 1px lightgrey;
 
-        p::first-letter{
-            font-style: italic;
-            font-size: 2rem;
-            font-family: serif;
-            font-weight: 500;
-         }
-        
-    }
-    #horizontal-list{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        width: 70%;
-        list-style: none;
-        padding-left: 0px;
-        font-family: sans-serif;
-        margin-left: 60rem;
-        align-items: center;
-        li{
-            display: inline-block;
-            margin: 0px 8px 8px 0px;
-            font-weight: 100;
-            font-size: 1.3rem;
-            a{
-                color:white;
-                text-decoration: none;
+        .mini-logo{
+            p{
+                margin: 5px;
+                font-size: 1.4rem;
+                font-weight: bold;
             }
         }
-        
-    }
 
+        .auth-links{
+            ul{
+                margin: 5% 5px;
+                display: flex;
+                list-style: none;
+                li{
+                    margin-right: 10px;
+                }
+            }
+        }
+
+        a{
+            color: white;
+            text-decoration: none;
+        }
+
+    }
 }

@@ -6,4 +6,5 @@ const postsController=require('../controllers/posts_controller');//this is for a
 // router.get('/post',postsController.postPage);// this is after signing page rendering to the posts psge
 router.post('/create',passport.checkAuthentication,postsController.create);//this is for calling the controller to create
 
+
 module.exports=router;

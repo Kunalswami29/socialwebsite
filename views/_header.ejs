@@ -1,29 +1,35 @@
-<header id="head-container">
-    <div id="icon">
-
-        <p>Codeial</p>
-        <i class="fab fa-studiovinari"></i>
-        
-    </div>
-    <div id="horizontal-list">
-    <ul>
-        <% if(locals.user){ %>
-            <li style="font-size: 1.2rem; font-family: serif; color: white;"><%= user.name %></li>
-            <li style="border:1px solid white; border-radius: 5px;">
-                <a href="/users/sign-out">Sign-Out</a>
-            </li>
-        <% }else{%>
+<header id="layout-header">
+    <nav>
+        <div class="mini-logo">
+            <p>
+                <a href='/'>
+                    codeial<i class="fab fa-studiovinari"></i>
+                </a>
+            </p>
+        </div>
     
-            <li>
-                 <a href="/users/sign-in">Sign-In</a>
-            </li>
-            
-            <li>
-                <a href="/users/sign-up">Sign-Up</a>
-            </li>
-
-        <% } %>
+        <div class="auth-links">
+            <ul>
+                <% if (locals.user){ %>
+                <li>
+                    <a href="/users/profile"><%= user.name %></a>
+                </li>
+                <li>
+                    <a href="/users/sign-out">Sign Out</a>
+                </li>
+                <% }else{ %>
+                <li>
+                    <a href="/users/sign-in">Sign In</a>
+                </li>
+                <li>
+                    <a href="/users/sign-in">Sign Up</a>
+                </li>
         
-    </ul>
-    </div>
+                <% } %>
+            </ul>
+        </div>
+    </nav>
+ 
+
+
 </header>
