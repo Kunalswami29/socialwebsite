@@ -21,3 +21,21 @@ module.exports.create = function(req, res){
 
     });
 }
+
+
+module.exports.destroy = function(req, res){
+    Comment.findById(req.params.id, function(err, comment){
+        if (comment.user == req.user.id){
+            // to store the id of the post in which this particular comment is stored
+            let postId = comment.post;
+
+            comment.remove();
+            // this is to store the id of the post to which this particular comment belong
+            Post.findByIdAndUpdate(postId, { $pull: {comments: req.params.id}}, function(err, post){
+                return res.redirect('back');
+            })
+        }else{
+            return res.redirect('back');
+        }
+    });
+}

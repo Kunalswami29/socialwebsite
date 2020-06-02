@@ -1,17 +1,30 @@
-const Post=require('../models/post');
+const Post = require('../models/post');
+const Comment = require('../models/comment');
 
-//for creating the post in the db
-module.exports.create=function(req,res){
+module.exports.create = function(req, res){
     Post.create({
-        content:req.body.content,//this is to sore content in the db
-        user:req.user._id, //this is to store content to particular id in db
-    },function(err,post){
+        content: req.body.content,
+        user: req.user._id
+    }, function(err, post){
         if(err){console.log('error in creating a post'); return;}
-        
 
         return res.redirect('back');
-    
     });
 }
 
-// for delete
+
+module.exports.destroy = function(req, res){
+    Post.findById(req.params.id, function(err, post){
+        // .id means converting the object id into string
+        if (post.user == req.user.id){
+            post.remove();
+            // this is to delete the many comments with same id
+            Comment.deleteMany({post: req.params.id}, function(err){
+                return res.redirect('back');
+            });
+        }else{
+            return res.redirect('back');
+        }
+
+    });
+}
