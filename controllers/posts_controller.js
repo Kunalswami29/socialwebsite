@@ -12,7 +12,7 @@ module.exports.create = function(req, res){
     });
 }
 
-
+// this is to delete the post
 module.exports.destroy = function(req, res){
     Post.findById(req.params.id, function(err, post){
         // .id means converting the object id into string
