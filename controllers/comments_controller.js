@@ -10,14 +10,15 @@ module.exports.create = async function (req, res) {
                 post: req.body.post,
                 user: req.user._id
             });   // handle error
+            req.flash('success', 'commented successfully')
 
             post.comments.push(comment); // this is to push comment to the post(arrayofcomments section );
             post.save(); // this is to save after pushing it
             res.redirect('/');
         }
     } catch (err) {
-        console.log('error', err);
-        return;
+        req.flash('error',err);
+        return res.redirect('/');
     }
 
 };
@@ -34,13 +35,15 @@ module.exports.destroy = async function (req, res) {
             comment.remove();
             // this is to store the id of the post to which this particular comment belong
             let post= Post.findByIdAndUpdate(postId, { $pull: { comments: req.params.id } });
+            req.flash('success','comment deleted successfuly')
             return res.redirect('back');
         } else {
+            req.flash('error','You cannot delete this comment')
             return res.redirect('back');
         }
     } catch (err) {
-        console.log('error', err);
-        return;
+        req.flash('error',err);
+        return res.redirect('back');
     }
 
 }

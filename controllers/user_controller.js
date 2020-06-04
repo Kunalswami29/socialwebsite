@@ -16,7 +16,8 @@ module.exports.profile = function(req, res){
 module.exports.update= function(req,res){
     if(req.user.id == req.params.id){
         User.findByIdAndUpdate(req.params.id, req.body, function(err,user){
-            return res.redirect('/back');
+            req.flash('success','the profile is successfuly updated');
+            return res.redirect('/')
         })
     }else{
         return res.status(401).send('unauthorized');
@@ -27,7 +28,7 @@ module.exports.update= function(req,res){
 // render the sign up page
 module.exports.signUp = function(req, res){
     if (req.isAuthenticated()){
-        return res.redirect('/users/profile');
+        return res.redirect('/');
     }
 
     return res.render('user_sign_up', {
@@ -58,8 +59,8 @@ module.exports.create = function(req, res){
 
         if (!user){
             User.create(req.body, function(err, user){
-                if(err){console.log('error in creating user while signing up'); return}
-
+                if(err){req.flash('error',err); return}
+                req.flash('success','you are not signed in')
                 return res.redirect('/users/sign-in');
             })
         }else{
