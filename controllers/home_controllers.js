@@ -8,7 +8,8 @@ module.exports.home =  async function(req, res){
     // this is the way of async the code.
 
     try{
-        let posts= await Post.find({})  // this  will perform this statement first
+        let posts= await Post.find({})      // this  will perform this statement first
+        .sort('-createdAt')  
         .populate('user')   // this is to populate the user i.e. to extract user whole details
         .populate({
             path:'comments',
