@@ -9,8 +9,11 @@ module.exports.create = async function (req, res) {
                 content: req.body.content,
                 post: req.body.post,
                 user: req.user._id
-            });   // handle error
+            });  
+            post.comments.push(comment); // this is to push comment to the post(arrayofcomments section );
+            post.save(); // this is to save after pushing it
             if(req.xhr){
+                comment = await comment.populate('user', 'name').execPopulate();
                 return res.status(200).json({
                     data:{
                         comment: comment
@@ -18,10 +21,7 @@ module.exports.create = async function (req, res) {
                     message :'comment created'
                 })
             }
-            req.flash('success', 'commented successfully')
-
-            post.comments.push(comment); // this is to push comment to the post(arrayofcomments section );
-            post.save(); // this is to save after pushing it
+            req.flash('success', 'commented successfully');
             res.redirect('/');
         }
     } catch (err) {
@@ -46,7 +46,7 @@ module.exports.destroy = async function (req, res) {
             if(req.xhr){
                 return res.status(200).json({
                     data:{
-                        comments :req.params.id
+                        comment_id :req.params.id
                     },
                     message:'comment deleted'
                 })
