@@ -4,7 +4,7 @@
         let newPostForm = $('#new-post-form');
 
         newPostForm.submit(function(e){
-            e.preventDefault();
+            e.preventDefault();  // this is for preventing the submit default action
 
             $.ajax({
                 type: 'post',
@@ -12,7 +12,7 @@
                 data: newPostForm.serialize(),
                 success: function(data){
                     let newPost = newPostDom(data.data.post);
-                    $('#posts-list-container>ul').prepend(newPost);
+                    $('#posts-list-container>ul').prepend(newPost); // this is to prepend means putting the file at the top
                     deletePost($(' .delete-post-button', newPost));
 
                     // call the create comment class
