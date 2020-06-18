@@ -63,7 +63,7 @@ module.exports.signUp = function(req, res){
 
     return res.render('user_sign_up', {
         title: "Codeial | Sign Up"
-    })
+    });
 }
 
 
@@ -99,6 +99,7 @@ module.exports.create = function(req, res){
 
     });
 }
+
 
 
 // sign in and create a session for the user means after the sign in the user will render to the mentioned page

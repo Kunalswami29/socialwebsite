@@ -10,7 +10,7 @@ exports.newcomment = (comment) => {
         html: htmlString
     },(err,info) => {
         if(err){console.log('error in sending mails',err); return;}
-        console.log('Message Sent',info);
+        // console.log('Message Sent',info);
         return; 
     });
 }
