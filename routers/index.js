@@ -12,6 +12,7 @@ router.use('/posts',require('./posts'));        //this is used to call the posts
 router.use('/comments',require('./comments')) ;        //this is used to call the posts.js file from index.js
 
 router.use('/api',require('./api'));
+router.use('/likes',require('./likes'))
 
 // for any further routes, access from here
 // router.use('/routerName', require('./routerfile));
