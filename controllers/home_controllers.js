@@ -1,66 +1,47 @@
-const Post=require('../models/post')
-const user= require('../models/user');
+const Post = require('../models/post');
+const User = require('../models/user');
 
-module.exports.home =  async function(req, res){
-    // console.log(req.cookies);
-    // res.cookie('user_id', 25);
 
-    // this is the way of async the code.
+
+module.exports.home = async function(req, res){
 
     try{
-        let posts= await Post.find({})      // this  will perform this statement first
-        .sort('-createdAt')  
-        .populate('user')   // this is to populate the user i.e. to extract user whole details
+        // CHANGE :: populate the likes of each post and comment
+        let posts = await Post.find({})
+        .sort('-createdAt')
+        .populate('user')
         .populate({
-            path:'comments',
-            populate:{
-                 path:'user'
+            path: 'comments',
+            populate: {
+                path: 'user'
+            },
+            populate: {
+                path: 'likes'
             }
-       });
+        }).populate('likes');
 
-        let users= await user.find({}); // then this is statement
-
-        return res.render('home',{  // then this is performed
-            title:"codeial | Home",
-            posts:posts,
-            all_users:users
-        });
-    }catch(err){
-        console.log('Error',err);
-        return;
-
-    }
     
+        let users = await User.find({});
+
+        return res.render('home', {
+            title: "Codeial | Home",
+            posts:  posts,
+            all_users: users
+        });
+
+    }catch(err){
+        console.log('Error', err);
+        return;
+    }
+   
 }
 
 // module.exports.actionName = function(req, res){}
 
 
-// (this is the way of doing it without asyn await functionality)
+// using then
+// Post.find({}).populate('comments').then(function());
 
+// let posts = Post.find({}).populate('comments').exec();
 
-// module.exports.home = function(req, res){
-//     // console.log(req.cookies);
-//     // res.cookie('user_id', 25);
-   
-//     // this is to populate the user i.e. to extract user whole details
-//     Post.find({})
-//     .populate('user')
-//     .populate({
-//         path:'comments',
-//         populate:{
-//             path:'user'
-//         }
-//     })
-//     .exec(function(err,posts){
-//         user.find({},function(err,users){
-//             return res.render('home',{
-//                 title:"codeial | Home",
-//                 posts:posts,
-//                 all_users:users
-//             });
-//         });
-       
-//     });
-     
-// }
+// posts.then()
